@@ -1,0 +1,40 @@
+.top-categories-item {
+    flex: 1;
+    margin: 3px;
+    height: 70vh;
+    position: relative;
+}
+
+.top-categories-item__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.top-categories-item-info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-categories-item-info__title {
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+
+.top-categories-item-info__button {
+    border: none;
+    padding: 10px;
+    background-color: white;
+    color: gray;
+    cursor: pointer;
+    font-weight: 600;
+}
