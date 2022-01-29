@@ -1,5 +1,5 @@
 import React from "react";
-import TopCategoriesItem from "../top-category-item/TopCategoriesItem";
+import TopCategoriesItem from "./top-categories-item/TopCategoriesItem";
 import "./top-categories.css";
 
 const categories = [
@@ -24,7 +24,7 @@ function TopCategories() {
   return (
     <div className="top-categories">
       {categories.map((category) => (
-        <TopCategoriesItem item={category} />
+        <TopCategoriesItem item={category} key={category.id} />
       ))}
     </div>
   );

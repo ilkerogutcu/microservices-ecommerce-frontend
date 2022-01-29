@@ -5,6 +5,7 @@ import Navbar from "../../compenents/navbar/Navbar";
 import Slider from "../../compenents/slider/Slider";
 import "./home.css";
 import TopCategories from "../../compenents/top-categories/TopCategories";
+import TopProducts from "../../compenents/top-products/TopProducts";
 const Home = () => {
   return (
     <div>
@@ -43,6 +44,7 @@ const Home = () => {
         ]}
       />
       <TopCategories/>
+      <TopProducts/>
     </div>
   );
 };
