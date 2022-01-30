@@ -4,8 +4,8 @@ import Navigation from "../../compenents/navigation/Navigation";
 import Navbar from "../../compenents/navbar/Navbar";
 import Slider from "../../compenents/slider/Slider";
 import "./home.css";
+import ProductList from "../../compenents/product-list/ProductList";
 import TopCategories from "../../compenents/top-categories/TopCategories";
-import TopProducts from "../../compenents/top-products/TopProducts";
 const Home = () => {
   return (
     <div>
@@ -44,7 +44,8 @@ const Home = () => {
         ]}
       />
       <TopCategories/>
-      <TopProducts/>
+      <h1 className="home__title">En Çok Ziyaret Edilen Ürünler</h1>
+      <ProductList/>
     </div>
   );
 };
