@@ -1,5 +1,10 @@
 export interface IProduct{
     id: number;
-    name: string;
-
+    brand: string;
+    title: string;
+    url: string;
+    oldPrice: number;
+    newPrice: number;
+    discountRate: string;
+    img: string;
 }

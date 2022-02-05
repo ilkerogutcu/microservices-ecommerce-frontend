@@ -1,0 +1,35 @@
+.newsletter {
+    height: 60vh;
+    background-color: #fcf5f5;
+}
+
+.newsletter__title {
+    font-size: 70px;
+    margin-bottom: 20px;
+}
+
+.newsletter__description {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.newsletter__form {
+    width: 50%;
+    height: 40px;
+    background-color: white;
+    border: 1px solid lightgray;
+}
+
+.newsletter__form__input{
+    border: none;
+    flex:8;
+    padding-left: 20px;
+
+}
+.newsletter__form__button{
+    flex:1;
+    border: none;
+    background-color: teal;
+    color:white
+}

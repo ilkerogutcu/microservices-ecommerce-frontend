@@ -1,8 +1,9 @@
 import React from "react";
 import Home from "./pages/home/Home";
+import ProductDiscover from "./pages/product-discover/ProductDiscover";
 
 function App() {
-  return <Home></Home>;
+  return <ProductDiscover/>
 }
 
 export default App;
