@@ -1,9 +1,10 @@
 import React from "react";
 import Home from "./pages/home/Home";
+import ProductDetail from "./pages/product-detail/ProductDetail";
 import ProductDiscover from "./pages/product-discover/ProductDiscover";
 
 function App() {
-  return <ProductDiscover/>
+  return <ProductDetail/>
 }
 
 export default App;

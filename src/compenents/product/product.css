@@ -93,19 +93,19 @@
     box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1) inset;
 }
 
- .product-grid__content__title {
+.product-grid__content__title {
     font-size: 16px;
     font-weight: 600;
     text-transform: capitalize;
     margin: 0 0 7px;
 }
 
- .product-grid__content__title a {
+.product-grid__content__title a {
     color: #777;
     transition: all 0.3s ease 0s;
 }
 
- .product-grid__content__title a:hover {
+.product-grid__content__title a:hover {
     color: #a5ba8d;
 }
 
@@ -114,6 +114,7 @@
     font-size: 17px;
     font-weight: 600;
 }
+
 .product-grid__content__price span {
     color: #888;
     font-size: 14px;
@@ -121,7 +122,7 @@
     text-decoration: line-through;
 }
 
- .product-grid__content__rating {
+.product-grid__content__rating {
     display: flex;
     justify-content: center;
 }
