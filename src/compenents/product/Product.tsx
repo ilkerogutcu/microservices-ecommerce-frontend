@@ -2,11 +2,12 @@ import { SearchOutlined, ShoppingCartOutlined } from "@mui/icons-material";
 import Rating from "@mui/material/Rating";
 import classNames from "classnames";
 import React from "react";
+import { IProduct } from "../../types/product";
 
 import "./product.css";
 
 interface ProductProps {
-  item: any;
+  item: IProduct;
   customClassName?: string;
 }
 

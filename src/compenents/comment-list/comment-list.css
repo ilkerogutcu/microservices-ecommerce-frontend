@@ -1,0 +1,13 @@
+.comment-list{
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-top: 30px;
+}
+
+.comment-list__item{
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 60px;
+    margin-top: 30px;
+    list-style: none;
+}

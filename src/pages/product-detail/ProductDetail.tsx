@@ -2,11 +2,14 @@ import { Add, Remove } from "@mui/icons-material";
 import { Rating } from "@mui/material";
 import React from "react";
 import Announcement from "../../compenents/announcement/Announcement";
+import CommentList from "../../compenents/comment-list/CommentList";
 import Footer from "../../compenents/footer/Footer";
 import Navbar from "../../compenents/navbar/Navbar";
 import Navigation from "../../compenents/navigation/Navigation";
 import Newsletter from "../../compenents/newsletter/Newsletter";
 import ProductList from "../../compenents/product-list/ProductList";
+import Slider from "../../compenents/slider/Slider";
+import { IComment } from "../../types/comment";
 import { IProduct } from "../../types/product";
 import "./product-detail.css";
 const popularProducts: IProduct[] = [
@@ -82,6 +85,145 @@ const popularProducts: IProduct[] = [
     img: "https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
   },
 ];
+
+const comments: IComment[] = [
+  {
+    id: 2,
+    content:
+      "lorem ipsum duaur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 2,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 2,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+  {
+    id: 3,
+    content: "lorem ipsum dur sleam aemrsad",
+    createdAt: new Date(),
+    productId: 1,
+    rating: 3,
+    userId: 3,
+    fullName: "ilker öğütcü",
+  },
+];
 function ProductDetail() {
   return (
     <div>
@@ -89,10 +231,21 @@ function ProductDetail() {
       <Navbar />
       <Navigation />
       <div className="product-detail">
-        <img
-          className="product-detail__image"
-          src="https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125085043/125085043_0_MC/15916678.jpg"
-          alt="product"
+        <Slider
+          customClassName="product-detail__slider"
+          items={[
+            <img
+              className="product-detail__image"
+              src="https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125085043/125085043_0_MC/15916678.jpg"
+              alt="sa"
+            />,
+
+            <img
+              className="product-detail__image"
+              src="https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388"
+              alt="sa"
+            />,
+          ]}
         />
         <div className="product-detail__info">
           <div className="product-detail__info__rating-container">
@@ -161,6 +314,10 @@ function ProductDetail() {
             </button>
           </div>
         </div>
+      </div>
+      <div className="product-detail__comments-container">
+        <h3 className="product-detail__comments-container__title">Yorumlar</h3>
+        <CommentList comments={comments} />
       </div>
       <h1 className="home__title">En Çok Ziyaret Edilen Ürünler</h1>
       <ProductList products={popularProducts} />

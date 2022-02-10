@@ -1,0 +1,35 @@
+
+.card {
+    border-radius: 5px;
+    background-color: #fff;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px
+}
+.comment-card{
+    border-radius: 5px;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-top: 30px;
+}
+.comment_fullname{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+.comment_content{
+    font-size: 18px;
+    color: #000;
+}
+.comment_date{
+    font-size: 14px;
+    color: #000;
+    font-style: italic;
+}
+.comment-card__header{
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+}

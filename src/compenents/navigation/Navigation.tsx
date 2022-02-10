@@ -51,6 +51,18 @@ function Navigation() {
                   <div className="category-box__item">Takı</div>
                 </div>
               </div>
+               <div className="column">
+                <div className="category-box">
+                  <div className="category-box__title">Ayakkabı</div>
+                  <div className="category-box__item">Topuklu Ayakkabı</div>
+                  <div className="category-box__item">Günlük Ayakkabı</div>
+                  <div className="category-box__item">Bot</div>
+                  <div className="category-box__title">Aksesuar & Çanta</div>
+                  <div className="category-box__item">Çanta</div>
+                  <div className="category-box__item">Saat</div>
+                  <div className="category-box__item">Takı</div>
+                </div>
+              </div>
             </Paper>
           </Popper>
         </li>
