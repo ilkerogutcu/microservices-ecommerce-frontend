@@ -227,7 +227,7 @@ const comments: IComment[] = [
 function ProductDetail() {
   return (
     <div>
-      <Announcement message="" />
+      <Announcement message="50 TL Üstü Tüm Siparişlerde Kargo Bedava!" />
       <Navbar />
       <Navigation />
       <div className="product-detail">
