@@ -39,8 +39,13 @@
 
 .paper {
     align-items: flex-start;
-}
 
+}
+.popper{
+    z-index: 999;
+
+
+}
 .tab {
     display: flex;
     align-items: center;

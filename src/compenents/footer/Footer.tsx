@@ -7,9 +7,13 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import React from "react";
+import useAppContext from "../../core/app/util/useAppContext";
 import "./footer.css";
 
 function Footer() {
+  const { appState } = useAppContext();
+  console.log(appState);
+
   return (
     <footer className="footer">
       <div className="footer__about">

@@ -10,8 +10,6 @@ interface CommentProps {
 }
 
 function Comment({ item, customClassName }: CommentProps) {
-  console.log(item);
-
   return (
     <div className={classNames("comment-card", customClassName)}>
       <div className="comment-card__header has-space-between">

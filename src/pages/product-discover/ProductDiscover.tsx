@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
+import catalogApi from "../../api/CatalogApi";
 import Announcement from "../../compenents/announcement/Announcement";
 import Footer from "../../compenents/footer/Footer";
 import Navbar from "../../compenents/navbar/Navbar";
@@ -81,7 +82,13 @@ const popularProducts: IProduct[] = [
     img: "https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
   },
 ];
+
 function ProductDiscover() {
+  useEffect(() => {
+    (async () => {
+      await catalogApi.getTopProducts();
+    })();
+  }, []);
   return (
     <Fragment>
       <Announcement message="50 TL Üstü Tüm Siparişlerde Kargo Bedava!" />

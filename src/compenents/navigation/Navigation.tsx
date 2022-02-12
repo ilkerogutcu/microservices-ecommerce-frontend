@@ -25,7 +25,7 @@ function Navigation() {
       <ul className="navigation tab">
         <li className="navigation tab__item" onClick={handleClick}>
           <div className="navigation tab__item__title">Kadın</div>
-          <Popper id={id} open={open} anchorEl={anchorEl}>
+          <Popper className="popper" id={id} open={open} anchorEl={anchorEl}>
             <Paper className="navigation tab__item paper">
               <div className="column">
                 <div className="category-box">
