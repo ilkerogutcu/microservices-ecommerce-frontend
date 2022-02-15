@@ -45,7 +45,12 @@ function Product({ item, customClassName }: ProductProps) {
           ${item.newPrice} <span>${item.oldPrice}</span>
         </div>
         <div className="product-grid__content__rating">
-          <Rating name="read-only" value={3} readOnly></Rating>
+          <Rating
+            name="half-rating-read"
+            value={3.66667}
+            precision={0.5}
+            readOnly
+          />
         </div>
       </div>
     </div>
