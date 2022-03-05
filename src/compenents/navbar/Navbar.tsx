@@ -1,6 +1,8 @@
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { Badge } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ROUTES from "../../core/app/route/routes";
 import "./navbar.css";
 
 function Navbar() {
@@ -13,8 +15,13 @@ function Navbar() {
 
       <h1 className="logo">E-COMMERCE</h1>
       <div className="navbar__items">
-        <div className="navbar__item">KAYIT OL</div>
-        <div className="navbar__item">GİRİŞ YAP</div>
+        <Link to={ROUTES.REGISTER} className="navbar__item">
+          KAYIT OL
+        </Link>
+        <Link to={ROUTES.LOGIN} className="navbar__item">
+          GİRİŞ YAP
+        </Link>
+
         <div className="navbar__item">
           <Badge badgeContent={4} color="primary">
             <ShoppingCartOutlined />

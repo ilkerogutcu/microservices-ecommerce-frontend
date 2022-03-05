@@ -1,4 +1,6 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import Announcement from "../../compenents/announcement/Announcement";
 import Footer from "../../compenents/footer/Footer";
 import Navbar from "../../compenents/navbar/Navbar";
@@ -7,6 +9,9 @@ import Newsletter from "../../compenents/newsletter/Newsletter";
 import "./register.css";
 
 function Register() {
+  const { invoiceId } = useParams();
+  console.log(invoiceId);
+  
   return (
     <div>
       <Announcement message="50 TL Üstü Tüm Siparişlerde Kargo Bedava!" />
@@ -41,7 +46,7 @@ function Register() {
               type="text"
               placeholder="Şifreniz Tekrar"
             />
-            <button>KAYIT OL</button>
+            <button className="register__button">KAYIT OL</button>
           </form>
         </div>
       </div>

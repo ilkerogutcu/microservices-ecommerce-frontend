@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import "./announcement.css";
+import React from 'react';
 
 interface AnnouncementProps {
   message: string;

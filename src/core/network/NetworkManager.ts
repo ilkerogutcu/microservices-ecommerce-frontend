@@ -1,8 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 const BASE_CONFIG: AxiosRequestConfig = {
-  baseURL: "https://duofinder-backend.herokuapp.com/api/",
-  withCredentials: true,
+  baseURL: "http://localhost:5000/",
 };
 
 function createAxiosInstance(config: AxiosRequestConfig) {

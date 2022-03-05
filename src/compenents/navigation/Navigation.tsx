@@ -3,7 +3,6 @@ import Paper from "@mui/material/Paper";
 
 import React, { useEffect, useRef } from "react";
 import "./navigation.css";
-import { useApiService } from "../../hooks/useApiService";
 import { Link } from "react-router-dom";
 
 function Navigation() {

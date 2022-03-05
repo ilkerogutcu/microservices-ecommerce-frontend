@@ -26,7 +26,7 @@ function Login() {
               type="text"
               placeholder="Şifreniz"
             />
-            <button>GİRİŞ YAP</button>
+            <button className="login__button">GİRİŞ YAP</button>
           </form>
         </div>
       </div>

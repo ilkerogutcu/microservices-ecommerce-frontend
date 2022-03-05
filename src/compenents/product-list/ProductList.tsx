@@ -1,11 +1,12 @@
 import classNames from "classnames";
 import React from "react";
 import { IProduct } from "../../types/product";
+import { IProductCardViewModel } from "../../types/productCardViewModel";
 import Product from "../product/Product";
 import "./product-list.css";
 
 interface ProductListProps {
-  products: IProduct[];
+  products: IProductCardViewModel[];
   customClassName?: string;
 }
 function ProductList({ products, customClassName }: ProductListProps) {
