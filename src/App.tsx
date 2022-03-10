@@ -17,6 +17,8 @@ function App() {
       <Route path={ROUTES.LOGIN} element={<Login />}></Route>
       <Route path={ROUTES.REGISTER} element={<Register />}></Route>
       <Route path={ROUTES.PRODUCT.DETAIL} element={<ProductDetail />}></Route>
+      <Route path={ROUTES.BASKET.LIST} element={<Cart />}></Route>
+      <Route path={ROUTES.PRODUCT.LIST} element={<ProductDiscover />}></Route>
     </Routes>
   );
 }

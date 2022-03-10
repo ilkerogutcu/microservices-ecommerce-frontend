@@ -7,11 +7,19 @@ import Navbar from "../../compenents/navbar/Navbar";
 import Navigation from "../../compenents/navigation/Navigation";
 import Newsletter from "../../compenents/newsletter/Newsletter";
 import "./register.css";
+import "../../ui/helper.css";
+import { IRegister } from "../../types/register";
 
 function Register() {
-  const { invoiceId } = useParams();
-  console.log(invoiceId);
-  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data: any) => {
+    
+  };
   return (
     <div>
       <Announcement message="50 TL Üstü Tüm Siparişlerde Kargo Bedava!" />
@@ -20,32 +28,126 @@ function Register() {
       <div className="register">
         <div className="register-container">
           <h1 className="register__title">HESABINI OLUŞTUR</h1>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <input
               className="register__input"
               type="text"
               placeholder="Adınız"
+              {...register("firstName", {
+                required: true,
+                maxLength: 60,
+                minLength: 2,
+                pattern: /^[a-z ,.'-]+$/i,
+              })}
             />
+            {errors.firstName?.type === "required" && <p>Adınızı giriniz</p>}
+            {errors.firstName?.type === "maxLength" && (
+              <p>Adınız maksimum 60 karakterli olabilir</p>
+            )}
+            {errors.firstName?.type === "minLength" && (
+              <p>Adınız minimum 2 karakterli olabilir</p>
+            )}
+            {errors.firstName?.type === "pattern" && (
+              <p>Adınız özel karakterler içermemeli</p>
+            )}
+
             <input
               className="register__input"
               type="text"
               placeholder="Soyadınız"
+              {...register("lastName", {
+                required: true,
+                maxLength: 60,
+                minLength: 2,
+                pattern: /^[a-z ,.'-]+$/i,
+              })}
             />
+            {errors.lastName?.type === "required" && <p>Adınızı giriniz</p>}
+            {errors.lastName?.type === "maxLength" && (
+              <p>Adınız maksimum 60 karakterli olabilir</p>
+            )}
+            {errors.lastName?.type === "minLength" && (
+              <p>Adınız minimum 2 karakterli olabilir</p>
+            )}
+            {errors.lastName?.type === "pattern" && (
+              <p>Adınız özel karakterler içermemeli</p>
+            )}
             <input
               className="register__input"
               type="email"
               placeholder="E-posta Adresiniz"
+              {...register("email", {
+                required: true,
+                maxLength: 200,
+                minLength: 2,
+                pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i,
+              })}
             />
+            {errors.email?.type === "required" && (
+              <p>E-posta adresinizi giriniz</p>
+            )}
+            {errors.email?.type === "maxLength" && (
+              <p>E-posta adresiniz maksimum 200 karakterli olabilir</p>
+            )}
+            {errors.email?.type === "minLength" && (
+              <p>E-posta adresiniz minimum 2 karakterli olabilir</p>
+            )}
+            {errors.email?.type === "pattern" && (
+              <p>E-posta adresinizi doğru giriniz</p>
+            )}
             <input
               className="register__input"
-              type="text"
+              type="password"
               placeholder="Şifreniz"
+              {...register("password", {
+                required: true,
+                maxLength: 60,
+                minLength: 12,
+                pattern:
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/,
+              })}
             />
+            {errors.password?.type === "required" && <p>Şifrenizi giriniz</p>}
+            {errors.password?.type === "maxLength" && (
+              <p>Şifreniz maksimum 60 karakterli olabilir</p>
+            )}
+            {errors.password?.type === "minLength" && (
+              <p>Şifreniz minimum 12 karakterli olabilir</p>
+            )}
+            {errors.password?.type === "pattern" && (
+              <p>
+                Şifreniz en az bir büyük harf, bir küçük harf, bir rakam ve bir
+                özel karakter içermeli
+              </p>
+            )}
             <input
               className="register__input"
-              type="text"
+              type="password"
               placeholder="Şifreniz Tekrar"
+              {...register("confirmPassword", {
+                required: true,
+                maxLength: 60,
+                minLength: 12,
+                pattern:
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/,
+              })}
             />
+            {errors.confirmPassword?.type === "required" && (
+              <p>Şifrenizi tekrar giriniz</p>
+            )}
+            {errors.confirmPassword?.type === "maxLength" && (
+              <p>Şifreniz maksimum 60 karakterli olabilir</p>
+            )}
+            {errors.confirmPassword?.type === "minLength" && (
+              <p>Şifreniz minimum 12 karakterli olabilir</p>
+            )}
+            {errors.confirmPassword?.type === "pattern" && (
+              <p>
+                Şifreniz en az bir büyük harf, bir küçük harf, bir rakam ve bir
+                özel karakter içermeli
+              </p>
+            )}
+
             <button className="register__button">KAYIT OL</button>
           </form>
         </div>

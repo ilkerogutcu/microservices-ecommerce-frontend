@@ -3,11 +3,11 @@ const ROUTES = {
   LOGIN: "/login",
   REGISTER: "/register",
   PRODUCT: {
-    LIST: "/products",
+    LIST: "/category/:id/products",
     DETAIL: "/products/:id",
   },
   BASKET: {
-    LIST: "/basket"
+    LIST: "/basket",
   },
 } as const;
 

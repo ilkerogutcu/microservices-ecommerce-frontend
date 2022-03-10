@@ -22,8 +22,7 @@ const popularProducts: IProduct[] = [
     oldPrice: 200,
     newPrice: 150,
     discountRate: "-23%",
-    img:
-      "https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125085043/125085043_0_MC/15916678.jpg",
+    img: "https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125085043/125085043_0_MC/15916678.jpg",
   },
   {
     id: 2,
@@ -33,8 +32,7 @@ const popularProducts: IProduct[] = [
     oldPrice: 200,
     newPrice: 150,
     discountRate: "-23%",
-    img:
-      "https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388",
+    img: "https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388",
   },
   {
     id: 3,
@@ -44,8 +42,7 @@ const popularProducts: IProduct[] = [
     oldPrice: 200,
     newPrice: 150,
     discountRate: "-23%",
-    img:
-      "https://www.prada.com/content/dam/pradanux_products/U/UCS/UCS319/1YOTF010O/UCS319_1YOT_F010O_S_182_SLF.png",
+    img: "https://www.prada.com/content/dam/pradanux_products/U/UCS/UCS319/1YOTF010O/UCS319_1YOT_F010O_S_182_SLF.png",
   },
   {
     id: 4,
@@ -55,8 +52,7 @@ const popularProducts: IProduct[] = [
     oldPrice: 200,
     newPrice: 150,
     discountRate: "-23%",
-    img:
-      "https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png",
+    img: "https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png",
   },
   {
     id: 5,
@@ -66,8 +62,7 @@ const popularProducts: IProduct[] = [
     oldPrice: 200,
     newPrice: 150,
     discountRate: "-23%",
-    img:
-      "https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
+    img: "https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
   },
   {
     id: 6,
@@ -77,8 +72,7 @@ const popularProducts: IProduct[] = [
     oldPrice: 200,
     newPrice: 150,
     discountRate: "-23%",
-    img:
-      "https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
+    img: "https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
   },
 
   {
@@ -89,8 +83,7 @@ const popularProducts: IProduct[] = [
     oldPrice: 200,
     newPrice: 150,
     discountRate: "-23%",
-    img:
-      "https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
+    img: "https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
   },
 ];
 const Home = () => {
@@ -115,11 +108,11 @@ const Home = () => {
             </div>
 
             <div className="home__slide__info">
-              <h1 className="home__slide__info--title">AUTUMN COLLECTION</h1>
+              <h1 className="home__slide__info--title">Sonbahar Koleksiyonu</h1>
               <p className="home__slide__info--description">
-                DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.
+                Mükemmel ürünlerden yararlanın.
               </p>
-              <button className="home__slide__info--button">SHOW NOW</button>
+              <button className="home__slide__info--button">Alışverişe Başla</button>
             </div>
           </div>,
 
@@ -129,11 +122,11 @@ const Home = () => {
             </div>
 
             <div className="home__slide__info">
-              <h1 className="home__slide__info--title">LOUNGEWEAR LOVE</h1>
+              <h1 className="home__slide__info--title">Yaz Koleksiyonu</h1>
               <p className="home__slide__info--description">
-                DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.
+                Mükemmel ürünlerden yararlanın.
               </p>
-              <button className="home__slide__info--button">SHOW NOW</button>
+              <button className="home__slide__info--button">Alışverişe Başla</button>
             </div>
           </div>,
         ]}

@@ -1,15 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import "./ui/helper.css";
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-    </BrowserRouter>,
-  document.getElementById('root')
+  <CookiesProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </CookiesProvider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

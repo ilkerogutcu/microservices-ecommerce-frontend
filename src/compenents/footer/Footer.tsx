@@ -12,7 +12,7 @@ import "./footer.css";
 
 function Footer() {
   const { appState } = useAppContext();
-  console.log(appState);
+  console.log("amksnaksk");
 
   return (
     <footer className="footer">
