@@ -9,16 +9,32 @@ import Newsletter from "../../compenents/newsletter/Newsletter";
 import "./register.css";
 import "../../ui/helper.css";
 import { IRegister } from "../../types/register";
+import authApi from "../../api/AuthApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { log } from "console";
+import { useNavigate } from "react-router-dom";
 
-function Register() {
+function Register({ history }: any) {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    getValues,
+  } = useForm<IRegister>();
 
-  const onSubmit = (data: any) => {
-    
+  const onSubmit = async (data: IRegister) => {
+    await authApi
+      .signUp(data)
+      .then((res) => {
+        toast.success("Email onaylama linkiniz mail adresinize gönderildi");
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error("Hesap oluşturulurken bir hata oluştu!");
+        navigate("/");
+      });
   };
   return (
     <div>
@@ -37,7 +53,6 @@ function Register() {
                 required: true,
                 maxLength: 60,
                 minLength: 2,
-                pattern: /^[a-z ,.'-]+$/i,
               })}
             />
             {errors.firstName?.type === "required" && <p>Adınızı giriniz</p>}
@@ -47,10 +62,6 @@ function Register() {
             {errors.firstName?.type === "minLength" && (
               <p>Adınız minimum 2 karakterli olabilir</p>
             )}
-            {errors.firstName?.type === "pattern" && (
-              <p>Adınız özel karakterler içermemeli</p>
-            )}
-
             <input
               className="register__input"
               type="text"
@@ -59,18 +70,14 @@ function Register() {
                 required: true,
                 maxLength: 60,
                 minLength: 2,
-                pattern: /^[a-z ,.'-]+$/i,
               })}
             />
-            {errors.lastName?.type === "required" && <p>Adınızı giriniz</p>}
+            {errors.lastName?.type === "required" && <p>Soyadınızı giriniz</p>}
             {errors.lastName?.type === "maxLength" && (
-              <p>Adınız maksimum 60 karakterli olabilir</p>
+              <p>Soyadınız maksimum 60 karakterli olabilir</p>
             )}
             {errors.lastName?.type === "minLength" && (
-              <p>Adınız minimum 2 karakterli olabilir</p>
-            )}
-            {errors.lastName?.type === "pattern" && (
-              <p>Adınız özel karakterler içermemeli</p>
+              <p>Soyadınız minimum 2 karakterli olabilir</p>
             )}
             <input
               className="register__input"
@@ -95,6 +102,38 @@ function Register() {
             {errors.email?.type === "pattern" && (
               <p>E-posta adresinizi doğru giriniz</p>
             )}
+
+            <input
+              className="register__input"
+              type="date"
+              placeholder="Doğum Tarihiniz"
+              {...register("birthDate", {
+                required: true,
+              })}
+            />
+            {errors.birthDate?.type === "required" && (
+              <p>Doğum tarihinizi giriniz</p>
+            )}
+
+            <select
+              className="form-control"
+              {...register("gender", {
+                required: true,
+              })}
+            >
+              <option value="">Cinsiyet seçiniz</option>
+              <option key={0} value={0}>
+                Erkek
+              </option>
+              <option key={1} value={1}>
+                Kadın
+              </option>
+              <option key={2} value={2}>
+                Diğer
+              </option>
+              ))
+            </select>
+
             <input
               className="register__input"
               type="password"
@@ -154,6 +193,7 @@ function Register() {
       </div>
       <Newsletter />
       <Footer />
+      <ToastContainer />
     </div>
   );
 }

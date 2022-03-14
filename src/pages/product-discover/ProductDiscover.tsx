@@ -1,4 +1,5 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import catalogApi from "../../api/CatalogApi";
 import Announcement from "../../compenents/announcement/Announcement";
 import Footer from "../../compenents/footer/Footer";
@@ -7,15 +8,28 @@ import Navigation from "../../compenents/navigation/Navigation";
 import Newsletter from "../../compenents/newsletter/Newsletter";
 import ProductList from "../../compenents/product-list/ProductList";
 import { IProduct } from "../../types/product";
+import { IProductCardViewModel } from "../../types/productCardViewModel";
 import "./product-discover.css";
 
-
 function ProductDiscover() {
+  const { id } = useParams();
+  const [products, setProducts] = useState<IProductCardViewModel[]>([]);
+
   useEffect(() => {
     (async () => {
-      await catalogApi.getTopProducts();
+      try {
+        if (id) {
+          const { data } = await catalogApi.getProductsByCategory(id);
+          setProducts(data);
+        }
+      } catch (error) {
+        if (error instanceof Error) {
+          console.log(error.message);
+        }
+      }
     })();
   }, []);
+
   return (
     <Fragment>
       <Announcement message="50 TL Üstü Tüm Siparişlerde Kargo Bedava!" />
@@ -312,7 +326,7 @@ function ProductDiscover() {
           </div>
         </div>
       </div>
-      <ProductList products={[]} />
+      <ProductList products={products} />
       <Newsletter />
       <Footer />
     </Fragment>

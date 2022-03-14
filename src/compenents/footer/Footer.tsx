@@ -12,8 +12,6 @@ import "./footer.css";
 
 function Footer() {
   const { appState } = useAppContext();
-  console.log("amksnaksk");
-
   return (
     <footer className="footer">
       <div className="footer__about">

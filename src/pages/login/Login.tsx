@@ -10,13 +10,12 @@ import { ISignIn } from "../../types/signIn";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
-import { useCookies } from "react-cookie";
+
 
 function Login() {
   const [twoFactorAuthTrigger, setTwoFactorAuthTrigger] = useState(false);
   const [signIn, setSignIn] = useState<ISignIn>({ email: "", password: "" });
   const [signInWithTwoFactor, setSignInWithTwoFactor] = useState({ code: "" });
-  const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     await authApi

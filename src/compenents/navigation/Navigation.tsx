@@ -3,7 +3,8 @@ import Paper from "@mui/material/Paper";
 
 import React, { useEffect, useRef } from "react";
 import "./navigation.css";
-import { Link } from "react-router-dom";
+import { generatePath, Link } from "react-router-dom";
+import ROUTES from "../../core/app/route/routes";
 
 function Navigation() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -29,7 +30,9 @@ function Navigation() {
               <div className="column">
                 <div className="category-box">
                   <div className="category-box__title">Giyim</div>
-                  <div className="category-box__item">Tişört</div>
+                  <Link to={generatePath(ROUTES.PRODUCT.LIST, { id: "1" })} >
+                    <div className="category-box__item">Tişört</div>
+                  </Link>
                   <div className="category-box__item">Gömlek</div>
                   <div className="category-box__item">Kot Pantalon</div>
                   <div className="category-box__item">Eşofman</div>
@@ -50,7 +53,7 @@ function Navigation() {
                   <div className="category-box__item">Takı</div>
                 </div>
               </div>
-               <div className="column">
+              <div className="column">
                 <div className="category-box">
                   <div className="category-box__title">Ayakkabı</div>
                   <div className="category-box__item">Topuklu Ayakkabı</div>

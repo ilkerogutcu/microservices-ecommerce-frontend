@@ -20,6 +20,13 @@ const catalogApi = {
       `catalog/products/${id}`
     );
   },
+  getProductsByCategory(categoryId: string) {
+    return apiHandler<IProductCardViewModel[]>(
+      NetworkManager,
+      "get",
+      `catalog/category/${categoryId}/products`
+    );
+  },
   getCommentsOfProduct(id: string) {
     return apiHandler<IComment[]>(
       NetworkManager,

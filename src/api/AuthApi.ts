@@ -5,14 +5,13 @@ import { IRegister } from "../types/register";
 import { ISignIn, ISignInResponse } from "../types/signIn";
 import { IUser } from "../types/user";
 
-import { withCookies } from "react-cookie";
 
 const authApi = {
   getCurrentUser() {
     return apiHandler<IUser>(NetworkManager, "get", "accounts/me");
   },
   signUp(payload: IRegister) {
-    return apiHandler<IRegister>(NetworkManager, "post", "accounts/sign-up", {
+    return apiHandler<string>(NetworkManager, "post", "accounts/sign-up", {
       payload,
     });
   },

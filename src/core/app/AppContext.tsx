@@ -4,15 +4,10 @@ import { IUser } from "../../types/user";
 const initialAppState = {
   currentUser: null as IUser | null,
 };
-type AppStateReducerAction =
-  | {
-      type: "SET_CURRENT_USER";
-      payload: IUser;
-    }
-  | {
-      type: "SET_CURRENT_asdasdasdasdUSER";
-      payload: IUser;
-    };
+type AppStateReducerAction = {
+  type: "SET_CURRENT_USER";
+  payload: IUser;
+};
 
 function appStateReducer(
   state = initialAppState,
