@@ -19,6 +19,10 @@ import { IProductDetails } from "../../types/productDetails";
 import "./product-detail.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import webStorage from "../../core/storage/webStorage";
+import basketApi from "../../api/BasketApi";
+import { ICustomerBasket } from "../../types/customerBasket";
+import { IBasketItem } from "../../types/basketItem";
 
 const comments: IComment[] = [
   {
@@ -189,6 +193,25 @@ function ProductDetail() {
     setCurrentProduct(product);
   };
 
+  const addItemToBasket = () => {
+    if (currentProduct) {
+      // const basketItems = webStorage.cookie.getCookie("_basket-items");
+      // console.log(basketItems);
+      const basketItem: IBasketItem = {
+        productId: currentProduct.id,
+        brandName: currentProduct.brand,
+        productName: currentProduct.name,
+        pictureUrl: currentProduct.imageUrls[0],
+        unitPrice: currentProduct.salePrice,
+        color: currentProduct.color,
+        hexCode: currentProduct.hexCode,
+        size: currentProduct.size,
+        quantity: quantity,
+      };
+      basketApi.addItemToBasket(basketItem);
+    }
+  };
+
   return loading ? (
     <p>loading</p>
   ) : (
@@ -205,7 +228,11 @@ function ProductDetail() {
         />
         <div className="product-detail__info">
           <div className="product-detail__info__rating-container">
-            <Rating name="read-only" value={productDetails[0].ratingAverage} readOnly></Rating>
+            <Rating
+              name="read-only"
+              value={productDetails[0].ratingAverage}
+              readOnly
+            ></Rating>
             <span className="product-detail__info__rating">
               {productDetails[0].ratingAverage}
             </span>
@@ -263,7 +290,10 @@ function ProductDetail() {
               </span>
               <Add onClick={IncreaseQuantity} />
             </div>
-            <button className="product-detail__info__add-to-card-container__add-to-card">
+            <button
+              className="product-detail__info__add-to-card-container__add-to-card"
+              onClick={addItemToBasket}
+            >
               Sepete Ekle
             </button>
           </div>

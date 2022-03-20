@@ -1,5 +1,4 @@
 export interface IBasketItem {
-    id: string;
     productId: string;
     brandName: string;
     productName: string;

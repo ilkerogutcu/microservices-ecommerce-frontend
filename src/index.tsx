@@ -5,13 +5,14 @@ import reportWebVitals from "./reportWebVitals";
 import "./ui/helper.css";
 import { BrowserRouter } from "react-router-dom";
 import { CookiesProvider } from "react-cookie";
+import AppContextProvider from "./core/app/AppContextProvider";
 
 ReactDOM.render(
-  <CookiesProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <AppContextProvider>
       <App />
-    </BrowserRouter>
-  </CookiesProvider>,
+    </AppContextProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

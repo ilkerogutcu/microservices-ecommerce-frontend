@@ -13,12 +13,7 @@ function Navigation() {
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
-  // interface NavigationData {
-  //   title: string
-  //   ID: string
-  //   post_excerpt: string
-  // }
-  // const menuQuery = useApiService<NavigationData[]>('/wp-json/wp-utils/menus')
+
 
   return (
     <div className="navigation">

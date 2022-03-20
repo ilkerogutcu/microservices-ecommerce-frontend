@@ -10,7 +10,7 @@ import { ISignIn } from "../../types/signIn";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
-
+import { Navigate } from "react-router-dom";
 
 function Login() {
   const [twoFactorAuthTrigger, setTwoFactorAuthTrigger] = useState(false);
@@ -44,7 +44,7 @@ function Login() {
           .then((res) => {
             toast.success("Giriş Başarılı");
             console.log(res.data);
-            localStorage.setItem('token', res.data.jwtToken);
+            localStorage.setItem("token", res.data.jwtToken);
           })
           .catch((err) => {
             if (err.response.data) {
