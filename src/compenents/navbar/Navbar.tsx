@@ -1,7 +1,7 @@
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { Badge } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { generatePath, Link } from "react-router-dom";
 import ROUTES from "../../core/app/route/routes";
 import useAppContext from "../../core/app/util/useAppContext";
 import "./navbar.css";
@@ -11,8 +11,8 @@ function Navbar() {
     appState: { currentUser, customerBasket },
   } = useAppContext();
 
-  console.log(customerBasket );
-  
+  console.log(customerBasket);
+
   return (
     <nav className="navbar">
       <div className="navbar__search">
@@ -39,9 +39,11 @@ function Navbar() {
         )}
 
         <div className="navbar__item">
-          <Badge badgeContent={customerBasket?.items.length} color="primary">
-            <ShoppingCartOutlined />
-          </Badge>
+          <Link to={ROUTES.BASKET.LIST}>
+            <Badge badgeContent={customerBasket?.items.length} color="primary">
+              <ShoppingCartOutlined />
+            </Badge>
+          </Link>
         </div>
       </div>
     </nav>

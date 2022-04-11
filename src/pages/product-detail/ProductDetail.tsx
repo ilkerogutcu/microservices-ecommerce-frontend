@@ -23,6 +23,7 @@ import webStorage from "../../core/storage/webStorage";
 import basketApi from "../../api/BasketApi";
 import { ICustomerBasket } from "../../types/customerBasket";
 import { IBasketItem } from "../../types/basketItem";
+import useAppContext from "../../core/app/util/useAppContext";
 
 const comments: IComment[] = [
   {
@@ -167,6 +168,9 @@ function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
   const [currentProduct, setCurrentProduct] = useState<IProductDetails>();
   const [comments, setComments] = useState<IComment[]>([]);
+  const {
+    appState: { currentUser, customerBasket },
+  } = useAppContext();
 
   useEffect(() => {
     (async () => {
