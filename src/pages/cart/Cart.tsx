@@ -46,9 +46,14 @@ function Cart() {
           <span className="cart__total-product-count">
             Alışveriş Sepetiniz : {customerBasket?.items.length}
           </span>
-          <button className="cart__button--color-black">
-            ALIŞVERİŞE TAMAMLA
-          </button>
+          <Link
+            to={generatePath(ROUTES.CHECKOUT)}
+            className="cart__button--color-black"
+          >
+            <button className="cart__button--color-black">
+              ALIŞVERİŞE TAMAMLA
+            </button>
+          </Link>
         </div>
 
         <div className="cart__container">

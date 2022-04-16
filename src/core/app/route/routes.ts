@@ -10,6 +10,7 @@ const ROUTES = {
   BASKET: {
     LIST: "/basket",
   },
+  CHECKOUT: "/checkout",
 } as const;
 
 export default ROUTES;

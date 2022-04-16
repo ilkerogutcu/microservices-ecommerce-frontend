@@ -170,6 +170,7 @@ function ProductDetail() {
   const [comments, setComments] = useState<IComment[]>([]);
   const {
     appState: { currentUser, customerBasket },
+    dispatchAppStateAction,
   } = useAppContext();
 
   useEffect(() => {
@@ -213,6 +214,10 @@ function ProductDetail() {
         quantity: quantity,
       };
       basketApi.addItemToBasket(basketItem);
+      dispatchAppStateAction({
+        type: "ADD_BASKET_ITEM",
+        payload: basketItem,
+      });
     }
   };
 

@@ -10,12 +10,14 @@ import { ISignIn } from "../../types/signIn";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Login() {
   const [twoFactorAuthTrigger, setTwoFactorAuthTrigger] = useState(false);
   const [signIn, setSignIn] = useState<ISignIn>({ email: "", password: "" });
   const [signInWithTwoFactor, setSignInWithTwoFactor] = useState({ code: "" });
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     await authApi
@@ -42,13 +44,14 @@ function Login() {
         await authApi
           .signIn2FA({ code: signInWithTwoFactor.code, email: signIn.email })
           .then((res) => {
-            toast.success("Giriş Başarılı");
-            console.log(res.data);
             localStorage.setItem("token", res.data.jwtToken);
+            setTimeout(() => {
+              toast.success("Giriş Başarılı");
+            }, 5000);
+            navigate("/");
           })
           .catch((err) => {
             if (err.response.data) {
-              console.log(err.response.data);
               const error = err.response.data;
               toast.error(error);
             }

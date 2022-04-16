@@ -28,12 +28,13 @@ function Register({ history }: any) {
     await authApi
       .signUp(data)
       .then((res) => {
-        toast.success("Email onaylama linkiniz mail adresinize gönderildi");
+        setTimeout(() => {
+          toast.success("Email onaylama linkiniz mail adresinize gönderildi");
+        }, 5000);
         navigate("/");
       })
       .catch((err) => {
         toast.error("Hesap oluşturulurken bir hata oluştu!");
-        navigate("/");
       });
   };
   return (

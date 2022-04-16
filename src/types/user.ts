@@ -1,3 +1,5 @@
+import { IAddress } from "./address";
+
 export interface IUser {
   id: string;
   email: string;
@@ -5,5 +7,5 @@ export interface IUser {
   lastName: string;
   twoFactorEnabled: boolean;
   birthDate: Date;
-  addresses: any;
+  addresses: IAddress[];
 }

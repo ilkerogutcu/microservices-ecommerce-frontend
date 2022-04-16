@@ -11,8 +11,6 @@ function Navbar() {
     appState: { currentUser, customerBasket },
   } = useAppContext();
 
-  console.log(customerBasket);
-
   return (
     <nav className="navbar">
       <div className="navbar__search">
@@ -20,7 +18,9 @@ function Navbar() {
         <Search style={{ color: "gray", fontSize: 16 }} />
       </div>
 
-      <h1 className="logo">E-COMMERCE</h1>
+      <Link style={{ textDecoration: 'none',color:"black"}} to={ROUTES.HOME}>
+        <h1 className="logo">E-COMMERCE</h1>
+      </Link>
 
       <div className="navbar__items">
         {currentUser ? (

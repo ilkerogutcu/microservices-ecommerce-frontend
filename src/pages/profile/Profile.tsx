@@ -10,8 +10,10 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TabPanel from "../../compenents/tab-panel/TabPanel";
 import cityApi from "../../api/CityApi";
-
-
+import authApi from "../../api/AuthApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { IAddAddressToUser } from "../../types/addAddressToUser";
 
 function Profile() {
   const {
@@ -25,7 +27,7 @@ function Profile() {
     handleSubmit: addAddressHandleSubmit,
     formState: { errors: addAddressErrors },
     getValues: addAddressGetValues,
-    resetField
+    resetField,
   } = useForm();
 
   const [value, setValue] = useState(0);
@@ -33,10 +35,15 @@ function Profile() {
   const [districts, setDistricts] = useState<
     { id: string; name: string; cityId: string }[]
   >([]);
-  const [selectedCity, setSelectedCity] =
-    useState<{ id: string; name: string }>();
-  const [selectedDistrict, setSelectedDistrict] =
-    useState<{ id: string; name: string; cityId: string }>();
+  const [selectedCity, setSelectedCity] = useState<{
+    id: string;
+    name: string;
+  }>();
+  const [selectedDistrict, setSelectedDistrict] = useState<{
+    id: string;
+    name: string;
+    cityId: string;
+  }>();
 
   const changeSelectedCity = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const cityId = event.target.value;
@@ -61,8 +68,11 @@ function Profile() {
     }
   };
   const changePasswordOnSubmit = (data: any) => {};
-  const addAddressOnSubmit = (data: any) => {
-    console.log(data);
+  const addAddressOnSubmit = async (data: any) => {
+    await authApi.addAddress(data).then((res) => {
+      console.log(res);
+      toast.success("Adres Başarıyla Eklendi");
+    });
   };
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -259,7 +269,7 @@ function Profile() {
                     {...addAddress("phoneNumber", {
                       required: true,
                       maxLength: 60,
-                      minLength: 12,
+                      minLength: 10,
                     })}
                   />
                   {addAddressErrors.phoneNumber?.type === "required" && (
@@ -269,7 +279,7 @@ function Profile() {
                     <p>Telefon numaranız maksimum 60 karakterli olabilir</p>
                   )}
                   {addAddressErrors.phoneNumber?.type === "minLength" && (
-                    <p>Telefon numaranız minimum 2 karakterli olabilir</p>
+                    <p>Telefon numaranız minimum 10 karakterli olabilir</p>
                   )}
                   <select
                     className="form-control"
@@ -290,7 +300,7 @@ function Profile() {
                   )}
                   <select
                     className="form-control"
-                    {...addAddress("district")}
+                    {...addAddress("districtId")}
                     onChange={changeSelectedDistrict}
                   >
                     <option value="">İlçe Seçin</option>
@@ -301,27 +311,27 @@ function Profile() {
                         </option>
                       ))}
                   </select>
-                  {addAddressErrors.district?.type === "required" && (
+                  {addAddressErrors.districtId?.type === "required" && (
                     <p>İlçe seçiniz</p>
                   )}
                   <input
                     type="tel"
                     className="form-control"
                     placeholder="ZIP kodunuz"
-                    {...addAddress("zipCode", {
+                    {...addAddress("zip", {
                       required: true,
                       maxLength: 20,
                       minLength: 4,
                     })}
                   />
 
-                  {addAddressErrors.zipCode?.type === "required" && (
+                  {addAddressErrors.zip?.type === "required" && (
                     <p>ZIP kodunu giriniz</p>
                   )}
-                  {addAddressErrors.zipCode?.type === "maxLength" && (
+                  {addAddressErrors.zip?.type === "maxLength" && (
                     <p>ZIP kodunuz maksimum 20 karakterli olabilir</p>
                   )}
-                  {addAddressErrors.zipCode?.type === "minLength" && (
+                  {addAddressErrors.zip?.type === "minLength" && (
                     <p>ZIP kodunuz minimum 4 karakterli olabilir</p>
                   )}
 
@@ -352,6 +362,7 @@ function Profile() {
             </div>
           </TabPanel>
         </Box>
+        <ToastContainer />
       </div>
     </div>
   );

@@ -24,6 +24,7 @@ function AppContextProvider({ children }: { children: React.ReactElement }) {
       ) {
         navigate(ROUTES.HOME);
       }
+
       dispatchAppStateAction({
         type: "SET_CURRENT_USER",
         payload: getCurrentUserResponse.data as IUser,
