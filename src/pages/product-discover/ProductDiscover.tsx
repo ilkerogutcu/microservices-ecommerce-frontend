@@ -20,7 +20,7 @@ function ProductDiscover() {
       try {
         if (id) {
           const { data } = await catalogApi.getProductsByCategory(id);
-          setProducts(data);
+          setProducts(data.data);
         }
       } catch (error) {
         if (error instanceof Error) {

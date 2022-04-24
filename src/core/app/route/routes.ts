@@ -11,6 +11,10 @@ const ROUTES = {
     LIST: "/basket",
   },
   CHECKOUT: "/checkout",
+  PAYMENT_RESULT:{
+    SUCCESS: "/payment/success",
+    FAIL: "/payment/failure",
+  }
 } as const;
 
 export default ROUTES;

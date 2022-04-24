@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RequireAuth from "./compenents/require-auth/RequireAuth";
+import Result from "./compenents/result/Result";
 
 import AppContextProvider from "./core/app/AppContextProvider";
 import ROUTES from "./core/app/route/routes";
@@ -33,6 +34,26 @@ function App() {
       <Route path={ROUTES.BASKET.LIST} element={<Cart />}></Route>
       <Route path={ROUTES.PRODUCT.LIST} element={<ProductDiscover />}></Route>
       <Route path={ROUTES.CHECKOUT} element={<Checkout />}></Route>
+      <Route
+        path={ROUTES.PAYMENT_RESULT.SUCCESS}
+        element={
+          <Result
+            status="success"
+            title="Ödeme Başarılı"
+            message="Siparişiniz başarıyla oluşturuldu anasayfaya yönlendiriliyorsunuz..."
+          />
+        }
+      ></Route>
+      <Route
+        path={ROUTES.PAYMENT_RESULT.FAIL}
+        element={
+          <Result
+            status="error"
+            title="Ödeme Başarısız"
+            message="Ödeme yapılırken bir hata oluştu anasayfaya yönlendiriliyorsunuz. Lütfen tekrar deneyiniz..."
+          />
+        }
+      ></Route>
     </Routes>
   );
 }

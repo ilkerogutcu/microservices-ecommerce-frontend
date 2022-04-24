@@ -82,29 +82,34 @@ function Checkout() {
           );
           await delay(3000);
           while (retryCounter <= 5) {
-            orderApi
-              .GetPaymentHtmlContentOfOrder()
-              .then((response) => {
-                paymentIsSuccessful = true;
-                // show html content of payment in a new tab
-                const win = window.open("", "_blank");
-                if (win) {
-                  win.document.write(response.data);
-                  win.focus();
-                }
-              })
-              .catch(async (error) => {
-                console.log(error);
-                await delay(3000);
-                retryCounter++;
-              });
-            await delay(3000);
-            retryCounter++;
-            if (paymentIsSuccessful) {
+            if (currentUser) {
+              orderApi
+                .GetPaymentHtmlContentOfOrder()
+                .then((response) => {
+                  paymentIsSuccessful = true;
+                  // show html content of payment in a new tab
+                  const win = window.open("", "_blank");
+                  if (win) {
+                    win.document.write(response.data);
+                    win.focus();
+                  }
+                })
+                .catch(async (error) => {
+                  console.log(error);
+                  await delay(3000);
+                  retryCounter++;
+                });
+              await delay(3000);
+              retryCounter++;
+              if (paymentIsSuccessful) {
+                break;
+              }
+            } else {
+              toast.error("Ödeme yapmadan önce hesabınıza giriş yapmalısınız.");
               break;
             }
           }
-          if(!paymentIsSuccessful){
+          if (!paymentIsSuccessful) {
             toast.error(
               "Ödeme yapılırken bir hata oluştu lütfen bilgilerinizi kontrol ediniz."
             );

@@ -24,7 +24,7 @@ function Product({ item, customClassName }: ProductProps) {
           to={generatePath(ROUTES.PRODUCT.DETAIL, { id: item.id })}
           className="image"
         >
-          <img src={item.thumbnailImageUrl} alt={item.name} />
+          <img  src={item.thumbnailImageUrl} alt={item.name} />
         </Link>
         <span className="product-grid__discount">{item.discountRate}</span>
         <ul className="product-grid__icons">

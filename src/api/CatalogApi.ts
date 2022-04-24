@@ -1,5 +1,6 @@
 import apiHandler from "../core/network/apiHandler";
 import NetworkManager from "../core/network/NetworkManager";
+import { ListRequestResponse } from "../core/network/networkModels";
 import { IComment } from "../types/comment";
 import { IProduct } from "../types/product";
 import { IProductCardViewModel } from "../types/productCardViewModel";
@@ -21,10 +22,10 @@ const catalogApi = {
     );
   },
   getProductsByCategory(categoryId: string) {
-    return apiHandler<IProductCardViewModel[]>(
+    return apiHandler<ListRequestResponse<IProductCardViewModel>>(
       NetworkManager,
       "get",
-      `catalog/category/${categoryId}/products`
+      `catalog/category/${categoryId}/products?pageSize=5000`
     );
   },
   getCommentsOfProduct(id: string) {
