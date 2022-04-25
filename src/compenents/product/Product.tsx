@@ -16,7 +16,6 @@ interface ProductProps {
 }
 
 function Product({ item, customClassName }: ProductProps) {
-
   return (
     <div className="product-grid">
       <div className="product-grid__image">
@@ -24,24 +23,26 @@ function Product({ item, customClassName }: ProductProps) {
           to={generatePath(ROUTES.PRODUCT.DETAIL, { id: item.id })}
           className="image"
         >
-          <img  src={item.thumbnailImageUrl} alt={item.name} />
+          <img src={item.thumbnailImageUrl} alt={item.name} />
         </Link>
         <span className="product-grid__discount">{item.discountRate}</span>
         <ul className="product-grid__icons">
           <li>
-            <a href={item.thumbnailImageUrl}>
-              <ShoppingCartOutlined />
-            </a>
-          </li>
-          <li>
-            <a href={item.thumbnailImageUrl}>
-              <SearchOutlined />
-            </a>
+            <Link to={generatePath(ROUTES.PRODUCT.DETAIL, { id: item.id })}>
+              <a>
+                <SearchOutlined />
+              </a>
+            </Link>
           </li>
         </ul>
-        <a href={item.thumbnailImageUrl} className="product-grid__add-to-cart">
-          SEPETE EKLE
-        </a>
+        <Link to={generatePath(ROUTES.PRODUCT.DETAIL, { id: item.id })}>
+          <a
+            href={item.thumbnailImageUrl}
+            className="product-grid__add-to-cart"
+          >
+            Ürüne Git
+          </a>
+        </Link>
       </div>
       <div className="product-grid__content">
         <h3 className="product-grid__content__title">
@@ -50,7 +51,7 @@ function Product({ item, customClassName }: ProductProps) {
           </a>
         </h3>
         <div className="product-grid__content__price">
-          ${item.salePrice} <span>${item.listPrice}</span>
+          TRY {item.salePrice} <span>TRY {item.listPrice}</span>
         </div>
         <div className="product-grid__content__rating">
           <Rating

@@ -17,7 +17,7 @@ const Home = () => {
   const [topProducts, setTopProducts] = useState<IProductCardViewModel[]>([]);
   useEffect(() => {
     (async () => {
-      await catalogApi.getTopProducts().then((res) => {
+      await catalogApi.getTopProducts(10).then((res) => {
         setTopProducts(res.data);
       });
     })();

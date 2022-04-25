@@ -7,11 +7,11 @@ import { IProductCardViewModel } from "../types/productCardViewModel";
 import { IProductDetails } from "../types/productDetails";
 
 const catalogApi = {
-  getTopProducts() {
+  getTopProducts(count: number) {
     return apiHandler<IProductCardViewModel[]>(
       NetworkManager,
       "get",
-      "catalog/top-products"
+      "catalog/top-products?count=" + count
     );
   },
   getProductDetails(id: string) {

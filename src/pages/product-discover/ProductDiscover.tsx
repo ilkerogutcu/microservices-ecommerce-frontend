@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import catalogApi from "../../api/CatalogApi";
+import categoryApi from "../../api/CategoryApi";
 import Announcement from "../../compenents/announcement/Announcement";
 import Footer from "../../compenents/footer/Footer";
 import Navbar from "../../compenents/navbar/Navbar";
@@ -14,6 +15,7 @@ import "./product-discover.css";
 function ProductDiscover() {
   const { id } = useParams();
   const [products, setProducts] = useState<IProductCardViewModel[]>([]);
+  const [categoryName, setCategoryName] = useState<string>("");
 
   useEffect(() => {
     (async () => {
@@ -21,6 +23,8 @@ function ProductDiscover() {
         if (id) {
           const { data } = await catalogApi.getProductsByCategory(id);
           setProducts(data.data);
+          const category = await categoryApi.getCategoryById(id);
+          setCategoryName(category.data.name);
         }
       } catch (error) {
         if (error instanceof Error) {
@@ -28,7 +32,7 @@ function ProductDiscover() {
         }
       }
     })();
-  }, []);
+  }, [id]);
 
   return (
     <Fragment>
@@ -36,7 +40,7 @@ function ProductDiscover() {
       <Navbar />
       <Navigation />
       <div className="product-discover">
-        <h1 className="product-discover__category-title">Elbise</h1>
+        <h1 className="product-discover__category-title">{categoryName}</h1>
         <div className="product-discover__filter-container has-space-between">
           <div className="product-discover__filter-container__filter">
             <span className="product-discover__filter-container__filter__title">
