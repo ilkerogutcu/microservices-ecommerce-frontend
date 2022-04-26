@@ -8,12 +8,14 @@ import ROUTES from "./core/app/route/routes";
 import useAppContext from "./core/app/util/useAppContext";
 import Cart from "./pages/cart/Cart";
 import Checkout from "./pages/checkout/Checkout";
+import ForgotPassword from "./pages/forgot-password/ForgotPassword";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import ProductDetail from "./pages/product-detail/ProductDetail";
 import ProductDiscover from "./pages/product-discover/ProductDiscover";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
+import ResetPassword from "./pages/reset-password/ResetPassword";
 
 function App() {
   const {
@@ -29,6 +31,9 @@ function App() {
         element={<RequireAuth children={<Profile />}></RequireAuth>}
       ></Route>
       <Route path={ROUTES.LOGIN} element={<Login />}></Route>
+      <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPassword />}></Route>
+      <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />}></Route>
+
       <Route path={ROUTES.REGISTER} element={<Register />}></Route>
       <Route path={ROUTES.PRODUCT.DETAIL} element={<ProductDetail />}></Route>
       <Route path={ROUTES.BASKET.LIST} element={<Cart />}></Route>

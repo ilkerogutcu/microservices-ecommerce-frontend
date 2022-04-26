@@ -56,7 +56,6 @@ function Checkout() {
   }
   function StartCheckout() {
     if (selectedAddress && currentUser) {
-      console.log(selectedAddress);
 
       setBasketCheckout({
         ...basketCheckout,
@@ -86,27 +85,19 @@ function Checkout() {
               orderApi
                 .GetPaymentHtmlContentOfOrder()
                 .then((response) => {
-                  console.log("data" + response.data);
                   paymentIsSuccessful = true;
-                  // show html content in a pop up
-                  const htmlContent = response.data;
-                  console.log("htmlContent" + htmlContent);
 
+                  const htmlContent = response.data;
                   const html = document.createElement("html");
-                  console.log("html" + html);
                   html.innerHTML = htmlContent;
                   const popup = window.open("", "_blank");
                   if (popup) {
-                    console.log("popup içine girdi");
-
                     popup.document.write(html.innerHTML);
-
                     popup.document.close();
                     popup.focus();
                   }
                 })
                 .catch(async (error) => {
-                  console.log(error);
                   await delay(3000);
                   retryCounter++;
                 });

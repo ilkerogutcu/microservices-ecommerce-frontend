@@ -47,7 +47,9 @@ function Product({ item, customClassName }: ProductProps) {
       <div className="product-grid__content">
         <h3 className="product-grid__content__title">
           <a href={item.thumbnailImageUrl}>
-            <span className="is-bold">{item.brand}</span> {item.name}
+            <Link to={generatePath(ROUTES.PRODUCT.DETAIL, { id: item.id })}>
+              <span className="is-bold">{item.brand}</span> {item.name}
+            </Link>
           </a>
         </h3>
         <div className="product-grid__content__price">

@@ -10,12 +10,14 @@ import { ISignIn } from "../../types/signIn";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import ROUTES from "../../core/app/route/routes";
 
 function Login() {
   const [twoFactorAuthTrigger, setTwoFactorAuthTrigger] = useState(false);
   const [signIn, setSignIn] = useState<ISignIn>({ email: "", password: "" });
   const [signInWithTwoFactor, setSignInWithTwoFactor] = useState({ code: "" });
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e: any) => {
@@ -30,9 +32,7 @@ function Login() {
       })
       .catch((err) => {
         if (err.response.data) {
-          console.log(err.response.data);
-          const error = err.response.data;
-          toast.error(error);
+          toast.error("Bir hata oluştu!");
         }
       });
   };
@@ -48,7 +48,7 @@ function Login() {
             setTimeout(() => {
               toast.success("Giriş Başarılı");
             }, 5000);
-            navigate("/");
+            navigate(ROUTES.HOME);
           })
           .catch((err) => {
             if (err.response.data) {
@@ -90,6 +90,11 @@ function Login() {
                 placeholder="Şifreniz"
               />
               <button className="login__button">GİRİŞ YAP</button>
+              <Link to={ROUTES.FORGOT_PASSWORD}>
+                <button type="button" className="login__button">
+                  ŞİFREMİ UNUTTUM
+                </button>
+              </Link>
             </form>
           )}
           {twoFactorAuthTrigger && (
