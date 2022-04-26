@@ -84,6 +84,16 @@ const authApi = {
       `accounts/me/addresses/${addressId}`
     );
   },
+  changePassword( payload: {oldPassword: string; newPassword: string; confirmNewPassword: string}) {
+    return apiHandler<any>(
+      NetworkManager,
+      "post",
+      "accounts/me/change-password",
+      {
+        payload,
+      }
+    );
+  }
 };
 
 export default authApi;

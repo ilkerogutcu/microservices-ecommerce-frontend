@@ -81,17 +81,28 @@ function Checkout() {
             "Ödeme bilgileriniz doğru ise 3D Secure ile ödeme yapılacak ekrana yönlendirileceksiniz lütfen bekleyin."
           );
           await delay(3000);
-          while (retryCounter <= 5) {
+          while (retryCounter <= 7 && !paymentIsSuccessful) {
             if (currentUser) {
               orderApi
                 .GetPaymentHtmlContentOfOrder()
                 .then((response) => {
+                  console.log("data" + response.data);
                   paymentIsSuccessful = true;
-                  // show html content of payment in a new tab
-                  const win = window.open("", "_blank");
-                  if (win) {
-                    win.document.write(response.data);
-                    win.focus();
+                  // show html content in a pop up
+                  const htmlContent = response.data;
+                  console.log("htmlContent" + htmlContent);
+
+                  const html = document.createElement("html");
+                  console.log("html" + html);
+                  html.innerHTML = htmlContent;
+                  const popup = window.open("", "_blank");
+                  if (popup) {
+                    console.log("popup içine girdi");
+
+                    popup.document.write(html.innerHTML);
+
+                    popup.document.close();
+                    popup.focus();
                   }
                 })
                 .catch(async (error) => {
@@ -101,9 +112,6 @@ function Checkout() {
                 });
               await delay(3000);
               retryCounter++;
-              if (paymentIsSuccessful) {
-                break;
-              }
             } else {
               toast.error("Ödeme yapmadan önce hesabınıza giriş yapmalısınız.");
               break;

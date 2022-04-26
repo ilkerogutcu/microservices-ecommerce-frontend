@@ -14,6 +14,8 @@ import authApi from "../../api/AuthApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IAddAddressToUser } from "../../types/addAddressToUser";
+import { IOrderDetail } from "../../types/orderDetail";
+import orderApi from "../../api/OrderApi";
 
 function Profile() {
   const {
@@ -31,6 +33,7 @@ function Profile() {
   } = useForm();
 
   const [value, setValue] = useState(0);
+  const [orders, setOrders] = useState<IOrderDetail[]>([]);
   const [cities, setCities] = useState<{ id: string; name: string }[]>([]);
   const [districts, setDistricts] = useState<
     { id: string; name: string; cityId: string }[]
@@ -67,10 +70,13 @@ function Profile() {
       setSelectedDistrict(district);
     }
   };
-  const changePasswordOnSubmit = (data: any) => {};
+  const changePasswordOnSubmit = async (data: any) => {
+    await authApi.changePassword(data).then((res) => {
+      toast.success("Şifreniz başarıyla değiştirildi.");
+    });
+  };
   const addAddressOnSubmit = async (data: any) => {
     await authApi.addAddress(data).then((res) => {
-      console.log(res);
       toast.success("Adres Başarıyla Eklendi");
     });
   };
@@ -78,6 +84,13 @@ function Profile() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  useEffect(() => {
+    (async () => {
+      await orderApi.GetOrdersOfCurrentUser().then((res) => {
+        setOrders(res.data);
+      });
+    })();
+  }, [orders]);
   useEffect(() => {
     (async () => {
       await cityApi.getCities().then((res) => {
@@ -122,11 +135,11 @@ function Profile() {
                     type="password"
                     className="form-control"
                     placeholder="Şifrenizi Girin"
-                    {...changePassword("password", {
+                    {...changePassword("oldPassword", {
                       required: true,
                     })}
                   />
-                  {errors.password?.type === "required" && (
+                  {errors.oldPassword?.type === "required" && (
                     <p>Mevcut şifrenizi giriniz</p>
                   )}
                 </div>
@@ -146,16 +159,16 @@ function Profile() {
                         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/,
                     })}
                   />
-                  {errors.password?.type === "required" && (
+                  {errors.newPassword?.type === "required" && (
                     <p>Şifrenizi giriniz</p>
                   )}
-                  {errors.password?.type === "maxLength" && (
+                  {errors.newPassword?.type === "maxLength" && (
                     <p>Şifreniz maksimum 60 karakterli olabilir</p>
                   )}
-                  {errors.password?.type === "minLength" && (
+                  {errors.newPassword?.type === "minLength" && (
                     <p>Şifreniz minimum 12 karakterli olabilir</p>
                   )}
-                  {errors.password?.type === "pattern" && (
+                  {errors.newPassword?.type === "pattern" && (
                     <p>
                       Şifreniz en az bir büyük harf, bir küçük harf, bir rakam
                       ve bir özel karakter içermeli
@@ -170,7 +183,7 @@ function Profile() {
                     type="password"
                     className="form-control"
                     placeholder="Yeni Şifrenizi Tekrar Girin"
-                    {...changePassword("newPasswordAgain", {
+                    {...changePassword("confirmNewPassword", {
                       required: true,
                       maxLength: 60,
                       minLength: 12,
@@ -178,16 +191,16 @@ function Profile() {
                         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/,
                     })}
                   />
-                  {errors.password?.type === "required" && (
+                  {errors.confirmNewPassword?.type === "required" && (
                     <p>Şifrenizi giriniz</p>
                   )}
-                  {errors.password?.type === "maxLength" && (
+                  {errors.confirmNewPassword?.type === "maxLength" && (
                     <p>Şifreniz maksimum 60 karakterli olabilir</p>
                   )}
-                  {errors.password?.type === "minLength" && (
+                  {errors.confirmNewPassword?.type === "minLength" && (
                     <p>Şifreniz minimum 12 karakterli olabilir</p>
                   )}
-                  {errors.password?.type === "pattern" && (
+                  {errors.confirmNewPassword?.type === "pattern" && (
                     <p>
                       Şifreniz en az bir büyük harf, bir küçük harf, bir rakam
                       ve bir özel karakter içermeli
@@ -358,6 +371,53 @@ function Profile() {
                     Adres Ekle
                   </button>
                 </form>
+              </div>
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <div className="profile-form">
+              <div className="form-group">
+                <label>Siparişleriniz</label>
+                <div className="order-list">
+                  {orders.map((order) => (
+                    <div className="order-item" key={order.orderNumber}>
+                      <div className="order-item-header">
+                        <div className="order-item-header-left">
+                          <div className="order-item-header-left-left">
+                            {/* Order date format */}
+
+                            <strong>
+                              Sipariş Tarihi:
+                              {new Date(order.date).toLocaleDateString("en-US")}
+                            </strong>
+
+                            <strong>Sipariş Durumu: {order.status}</strong>
+                          </div>
+                          <div className="order-item-header-left-right">
+                            <strong>Toplam Tutar: {order.total} ₺</strong>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="order-item-body">
+                        {order.orderItems.map((orderItem) => (
+                          <div
+                            className="order-item-body-item"
+                            key={orderItem.id}
+                          >
+                            <div className="order-item-body-item-left">
+                              <img src={orderItem.pictureUrl} alt="" />
+                            </div>
+                            <div className="order-item-body-item-right">
+                              <p>Ürün İsmi: {orderItem.productName}</p>
+                              <p>Ürün Miktar: {orderItem.units}</p>
+                              <p>Ürün Fiyat: {orderItem.unitPrice} ₺</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </TabPanel>
