@@ -31,8 +31,8 @@ function Login() {
         setTwoFactorAuthTrigger(!twoFactorAuthTrigger);
       })
       .catch((err) => {
-        if (err.response.data) {
-          toast.error("Bir hata oluştu!");
+        if ((err.status = 400)) {
+          toast.error(err.response.data);
         }
       });
   };
@@ -45,15 +45,15 @@ function Login() {
           .signIn2FA({ code: signInWithTwoFactor.code, email: signIn.email })
           .then((res) => {
             localStorage.setItem("token", res.data.jwtToken);
+            toast.success("Giriş başarılı, anasayfaya yönlendiriliyorsunuz");
+
             setTimeout(() => {
-              toast.success("Giriş Başarılı");
+              navigate(ROUTES.HOME);
             }, 5000);
-            navigate(ROUTES.HOME);
           })
           .catch((err) => {
-            if (err.response.data) {
-              const error = err.response.data;
-              toast.error(error);
+            if ((err.status = 400)) {
+              toast.error(err.response.data);
             }
           });
       } else {

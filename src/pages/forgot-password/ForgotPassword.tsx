@@ -18,12 +18,10 @@ function ForgotPassword() {
       .forgotPassword(forgotPassword)
       .then((res) => {
         toast.success("Mail sistemde kayıtlı ise mail gönderilecektir");
-        forgotPassword.email = "";
       })
       .catch((err) => {
-        if (err.response.data) {
-          const error = err.response.data;
-          toast.error(error);
+        if ((err.status = 400)) {
+          toast.error(err.response.data);
         }
       });
   };

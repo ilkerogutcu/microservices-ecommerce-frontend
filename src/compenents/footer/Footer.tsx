@@ -51,25 +51,26 @@ function Footer() {
         <ul className="footer__links--list">
           <li className="footer__links--list__item">Anasayfa</li>
           <li className="footer__links--list__item">Sepet</li>
-          <li className="footer__links--list__item">Anasayfa</li>
-          <li className="footer__links--list__item">Anasayfa</li>
-          <li className="footer__links--list__item">Anasayfa</li>
-          <li className="footer__links--list__item">Anasayfa</li>
+          <li className="footer__links--list__item">Elbise</li>
+          <li className="footer__links--list__item">Ceket</li>
+          <li className="footer__links--list__item">Yemek Takımı</li>
+          <li className="footer__links--list__item">Cep Telefonu</li>
         </ul>
       </div>
       <div className="footer__contact">
         <h3 className="footer__title">İletişim</h3>
         <ul className="footer__contact--list">
           <li className="footer__contact--list__item">
-            <Room style={{ marginRight: "10px" }} /> 622 Dixie Path , South
-            Tobinchester 98336
+            <Room style={{ marginRight: "10px" }} /> Lorem ipsum dolor sit, amet
+            consectetur adipisicing elit
           </li>
 
           <li className="footer__contact--list__item">
             <Phone style={{ marginRight: "10px" }} /> +1 234 56 78
           </li>
           <li className="footer__contact--list__item">
-            <MailOutline style={{ marginRight: "10px" }} /> contact@lama.dev
+            <MailOutline style={{ marginRight: "10px" }} />
+            contact@ecommerce.com
           </li>
         </ul>
         <div className="footer__contact--payment">

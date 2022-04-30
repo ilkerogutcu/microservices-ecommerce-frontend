@@ -42,7 +42,7 @@ function ProductDiscover() {
       <div className="product-discover">
         <h1 className="product-discover__category-title">{categoryName}</h1>
         <div className="product-discover__filter-container has-space-between">
-          <div className="product-discover__filter-container__filter">
+          {/* <div className="product-discover__filter-container__filter">
             <span className="product-discover__filter-container__filter__title">
               Ürünleri Filtrele:
             </span>
@@ -327,9 +327,10 @@ function ProductDiscover() {
                 Eski Ürünlerden Yeniye
               </option>
             </select>
-          </div>
+          </div> */}
         </div>
       </div>
+      <hr/>
       <ProductList products={products} />
       <Newsletter />
       <Footer />

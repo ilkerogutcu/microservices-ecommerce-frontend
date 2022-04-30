@@ -12,7 +12,6 @@ import { IRegister } from "../../types/register";
 import authApi from "../../api/AuthApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { log } from "console";
 import { useNavigate } from "react-router-dom";
 
 function Register({ history }: any) {
@@ -28,13 +27,15 @@ function Register({ history }: any) {
     await authApi
       .signUp(data)
       .then((res) => {
+        toast.success("Email onaylama linkiniz mail adresinize gönderildi");
         setTimeout(() => {
-          toast.success("Email onaylama linkiniz mail adresinize gönderildi");
+          navigate("/");
         }, 5000);
-        navigate("/");
       })
       .catch((err) => {
-        toast.error("Hesap oluşturulurken bir hata oluştu!");
+        if ((err.status = 400)) {
+          toast.error(err.response.data);
+        }
       });
   };
   return (
