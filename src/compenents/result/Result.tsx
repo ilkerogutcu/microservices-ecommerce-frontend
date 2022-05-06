@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import React from "react";
 import "./result.css";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import ROUTES from "../../core/app/route/routes";
 
 interface ResultProps {
   status: string;

@@ -51,7 +51,7 @@ function Cart() {
             className="cart__button--color-black"
           >
             <button className="cart__button--color-black">
-              ALIŞVERİŞE TAMAMLA
+              ALIŞVERİŞİ TAMAMLA
             </button>
           </Link>
         </div>
