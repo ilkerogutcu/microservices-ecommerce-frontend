@@ -1,0 +1,52 @@
+.home__slider {
+    height: 100%;
+    display: flex;
+    transition: all 1.5s ease;
+}
+
+.home__slide {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.home__slide--image {
+    height: 100%;
+    flex: 1;
+}
+.home__slide--image img{
+    height: 80%;
+    padding-left: 20px;
+}
+
+.home__slide__info {
+    flex: 1;
+    padding: 50px;
+}
+
+.home__slide__info--title {
+    font-size: 100px;
+    font-weight: bolder;
+}
+
+.home__slide__info--description {
+    margin: 50px 0px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+.home__slide__info--button {
+    padding: 10px;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.home__title{
+    font-weight: bolder;
+    color: #333;
+    margin: 10 0 10 0;
+    text-align: center;
+}

@@ -1,0 +1,123 @@
+.cart {
+    padding: 20px;
+}
+
+.cart__title {
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.cart__button--color-white {
+    background-color: #fff;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+.cart__button--color-black {
+    background-color: #000;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cart__total-product-count {
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 0px 10px;
+}
+
+
+.cart__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart__product {
+    flex: 3;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart__product-detail {
+    flex: 2;
+    display: flex;
+}
+
+.cart__product-image {
+    width: 200px;
+
+}
+
+.cart__product-detail-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.cart__product-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.cart__product-price-detail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart__product-price-detail__amount-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart__product-price-detail__amount {
+    font-size: 24px;
+    margin: 5px;
+}
+
+.cart__product-price-detail__price {
+    font-size: 30px;
+    font-weight: 200;
+}
+.cart__container-summary{
+    flex: 1;
+    border: 0.5px solid lightgray;
+    border-radius: 10px;
+    padding: 20px;
+    height: 50vh;
+}
+.cart__container-summary__title{
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.cart__container-summary__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.cart__products{
+    flex:3;
+}
+hr{
+    background-color: #eee;
+    border: none;
+    height: 1px;
+}

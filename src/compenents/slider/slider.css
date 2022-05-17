@@ -1,0 +1,33 @@
+.slider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.slider__control-button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    padding: 0;
+    background: transparent;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.slider__control-button--previous {
+    left: 16px;
+}
+
+.slider__control-button--next {
+    right: 16px;
+}
